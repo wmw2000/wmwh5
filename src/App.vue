@@ -3,15 +3,17 @@
 </script>
 
 <template>
-  <keep-alive>
-    <router-view v-if="$route.meta.keepAlive"></router-view>
-  </keep-alive>
-  <router-view v-if="!$route.meta.keepAlive"></router-view>
-
+  <div id="app">
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
+  </div>
 </template>
 
 <style lang="scss">
 @import 'assets/common.scss';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
