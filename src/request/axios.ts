@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {Toast} from 'vant';
+// import {Toast} from 'vant';
 const request = axios.create({
   baseURL: 'https://test.cn',
   timeout: 60000, //设置超时一分钟
@@ -8,11 +8,11 @@ const request = axios.create({
 // 请求拦截器
 request.interceptors.request.use(function (config) {
   // 统一设置用户身份 token
-  Toast.loading({
-    duration: 0,
-    message: '加载中...',
-    forbidClick: true,
-  });
+  // Toast.loading({
+  //   duration: 0,
+  //   message: '加载中...',
+  //   forbidClick: true,
+  // });
   return config
 }, function (error) {
   // Do something with request error
@@ -25,7 +25,7 @@ request.interceptors.response.use(function (response) {
   return response
 }, function (error) {
   // Do something with response error
-  Toast('服务器开小差了~');
+  // Toast('服务器开小差了~');
   return Promise.reject(error)
 })
 

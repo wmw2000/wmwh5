@@ -21,14 +21,14 @@ export default defineConfig({
   server: { // 加上之后不提示Network: use `--host` to expose
     host: '0.0.0.0'
   },
-  css: {
-    postcss: {
-      plugins: [
-        postCssPxToRem({
-          rootValue: 37.5, //
-          propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
-        })
-      ]
-    },
-  },
+  // css: {
+  //   postcss: {
+  //     plugins: [
+  //       postCssPxToRem({
+  //         rootValue: 37.5, //
+  //         propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
+  //       })
+  //     ]
+  //   },
+  // },
 })

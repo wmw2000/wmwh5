@@ -1,23 +1,50 @@
 
 
-import { RouteRecordRaw, createRouter, createWebHashHistory } from "vue-router";
+import { RouteRecordRaw, createRouter, createWebHistory } from "vue-router";
 import { defineAsyncComponent } from 'vue'
 // 路由懒加载
-const _import = (path: string) => defineAsyncComponent(() => import(`../views/${path}.vue`))
+const _import = (path: string) => defineAsyncComponent(() => import(`../${path}.vue`))
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'home',
+    path: '/HelloWorld',
+    name: 'HelloWorld',
     meta: {
       title: "首页",
       keepAlive: false,
     },
-    component: () => _import('HelloWorld')
-  }
+    component: () => _import('views/HelloWorld')
+  },
+  {
+    path: '/',
+    name: 'home',
+    meta: {
+      title: "home",
+      keepAlive: false,
+    },
+    component: () => _import('views/home'),
+    children:[
+      {
+        path:'/Add',
+        name:'Add',
+        component:() => _import('components/Add'),
+      },
+      {
+        path:'/Delete',
+        name:'Delete',
+        component:() => _import('components/Delete'),
+      },
+      {
+        path:'/Done',
+        name:'Done',
+        component:() => _import('components/Done'),
+      },
+    ]
+  },
 ]
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
+  history: createWebHistory(),
+  routes,
+  linkExactActiveClass:'active',
 })
 router.beforeEach((to: any, from, next) => {
   document.title = to.meta.title;
